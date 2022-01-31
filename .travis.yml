@@ -1,0 +1,11 @@
+sudo: required 
+language: node_js
+node_js:
+    - "stable"
+    
+services: 
+    - docker
+before_install: 
+    - docker build -t Githubzoe/sample-app -f Dockerfile.dev .
+script:     
+    - docker run -e CI=true Githubzoe/sample-app npm run test -- --coverage --watchAll=false
