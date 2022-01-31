@@ -9,3 +9,14 @@ before_install:
     - docker build -t zoe/sample-docker-react -f Dockerfile.dev .
 script:     
     - docker run -e CI=true zoe/sample-docker-react npm run test -- --coverage --watchAll=false
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "sample-docker-react"
+    env: "Sampledockerreact-env"
+    bucket_name: "elasticbeanstalk-us-east-1-917682590331"
+    bucket_path: "EBApptest"
+    on: 
+        branch: main
+    access_key_id: "$AWS_ACCESS_KEY"
+    secret_access_key: "$AWS_SECRET_KEY"
