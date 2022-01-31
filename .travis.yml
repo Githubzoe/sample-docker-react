@@ -6,6 +6,6 @@ node_js:
 services: 
     - docker
 before_install: 
-    - docker build -t Githubzoe/sample-app -f Dockerfile.dev .
+    - docker build -t Githubzoe/sample-docker-react -f Dockerfile.dev .
 script:     
-    - docker run -e CI=true Githubzoe/sample-app npm run test -- --coverage --watchAll=false
+    - docker run -e CI=true Githubzoe/sample-docker-react npm run test -- --coverage --watchAll=false
